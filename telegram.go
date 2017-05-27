@@ -25,25 +25,15 @@ func findid() {
 
 	updates, err := bot.GetUpdatesChan(u)
 
-	//text := "sometext"
-	//msg := tgbotapi.NewMessage(119833076, text)
-	//msg.ReplyToMessageID = update.Message.MessageID
-
-	//bot.Send(msg)
-
 	for update := range updates {
 		if update.Message == nil {
 			break
 		}
 
-		//fmt.Println(update)
-
-		//log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 		userid := strconv.Itoa(update.Message.From.ID)
 
 		text := "Your userID: " + userid + "\n\nSet it in your eveapi.cfg file."
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
-		//msg.ReplyToMessageID = update.Message.MessageID
 
 		bot.Send(msg)
 		break
@@ -64,7 +54,6 @@ func achtung(what string) {
 
 	text := what + " Under attack!"
 	msg := tgbotapi.NewMessage(userid, text)
-	//msg.ReplyToMessageID = update.Message.MessageID
 
 	bot.Send(msg)
 }

@@ -46,22 +46,7 @@ func vaterpaz() {
 	}
 
 	v := Eveapi2{}
-	/*
-		testxml := `
-				<eveapi version="2">
-				<currentTime>2016-11-03 23:53:16</currentTime>
-				<result>
-					<rowset name="notifications" key="notificationID" columns="notificationID,typeID,senderID,senderName,sentDate,read">
-						<row notificationID="585088056" typeID="138" senderID="1000051" senderName="Republic Fleet" sentDate="2016-11-03 16:54:00" read="0"/>
-						<row notificationID="11111" typeID="42" senderID="1000051" senderName="Republic Fleet" sentDate="2016-11-03 16:54:00" read="0"/>
-						<row notificationID="4444444" typeID="184" senderID="1000051" senderName="Republic Fleet" sentDate="2016-11-03 16:54:00" read="0"/>
-					</rowset>
-				</result>
-				<cachedUntil>2016-11-04 00:20:16</cachedUntil>
-			</eveapi>
 
-		`
-	*/
 	err = xml.Unmarshal([]byte(eve), &v)
 	if err != nil {
 		fmt.Printf("error: %v", err)
@@ -73,7 +58,7 @@ func vaterpaz() {
 	for i := 0; i < len(v.Row); i++ {
 		//fmt.Printf("Rows: %v\n", v.Row[i].Type)
 		if v.Row[i].Type == "75" {
-			fmt.Println("FOUND on ID: %v", v.Row[i].LetterID) //Здесь будет вызов функции которая проверяет наличие Letterid в списке известных (если включено в конфиге) и вызов алерта
+			fmt.Println("FOUND on ID: %v", v.Row[i].LetterID)
 			//POS
 			_, _, _, onenotif, _, _ := config()
 			if onenotif { //Если в конфиге проверка true то
@@ -88,7 +73,7 @@ func vaterpaz() {
 			}
 
 		} else if v.Row[i].Type == "184" {
-			fmt.Println("FOUND on ID: %v", v.Row[i].LetterID) //Здесь будет вызов функции которая проверяет наличие Letterid в списке известных (если включено в конфиге) и вызов алерта
+			fmt.Println("FOUND on ID: %v", v.Row[i].LetterID)
 			//цитадель
 			_, _, _, onenotif, _, _ := config()
 			if onenotif { //Если в конфиге проверка true то

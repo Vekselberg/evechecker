@@ -17,13 +17,12 @@ func config() (string, string, string, bool, string, int64) {
 	}
 	cfgpath := dir + "\\eveapi.cfg"
 
-	//fmt.Println(cfgpath)
 	file, err := ioutil.ReadFile(cfgpath) // For read access.
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	cfgStr := string(file) //fmt.Println(cfgStr)
+	cfgStr := string(file)
 
 	cfg := struct {
 		Eve struct {
@@ -39,28 +38,6 @@ func config() (string, string, string, bool, string, int64) {
 	if err != nil {
 		log.Fatalf("Failed to parse gcfg data: %s", err)
 	}
-	/*
-		if param == "timeout" {
-			return cfg.Eve.Timeout
-		} else if param == "keyId" {
-			return cfg.Eve.KeyID
-		} else if param == "vCode" {
-			return cfg.Eve.VCode
-		} else if param == "onenotif"{
-			return cfg.Eve.Onenotif
-		}
-
-
-		return ""
-
-
-
-			err := gcfg.ReadStringInto(&cfg, data)
-			if err != nil {
-				log.Fatalf("Failed to parse gcfg data: %s", err)
-			}
-
-	*/
 
 	return cfg.Eve.Timeout, cfg.Eve.KeyID, cfg.Eve.VCode, cfg.Eve.Onenotif, cfg.Eve.Bot, cfg.Eve.Userid
 
