@@ -9,6 +9,6 @@ Run it in cmd with administration rights.
 
 Options:
 userid - Start checker in UserID detection mode, just write some words to your telegram bot.
-install/start/stop/pause/continue/remove - service management. By default service NOT start automaticaly.
+install/start/stop/pause/continue/remove - service management. By default service NOT starts automaticaly.
 
-known.txt contain letter IDs and can be safety deleted any time. 
+known.txt contain letter IDs and can be safely deleted any time. 
